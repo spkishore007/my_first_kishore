@@ -1,0 +1,1 @@
+json.array! @user_defineds, partial: 'user_defineds/user_defined', as: :user_defined

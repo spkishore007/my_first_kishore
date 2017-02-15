@@ -1,0 +1,1 @@
+json.partial! "user_defineds/user_defined", user_defined: @user_defined
