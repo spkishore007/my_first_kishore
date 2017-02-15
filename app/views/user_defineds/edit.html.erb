@@ -1,6 +1,5 @@
-<h1>Editing user_defined</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user_defined %> |
-<%= link_to 'Back', user_defineds_path %>
+<%- model_class = UserDefined -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => UserDefined %></h1>
+</div>
+<%= render :partial => 'form' %>

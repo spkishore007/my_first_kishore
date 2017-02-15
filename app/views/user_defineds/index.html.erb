@@ -1,23 +1,34 @@
-<h1>Listing user_defineds</h1>
-
-<table>
+<%- model_class = UserDefined -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => UserDefined %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @user_defineds.each do |user_defined| %>
       <tr>
-        <td><%= link_to 'Show', user_defined %></td>
-        <td><%= link_to 'Edit', edit_user_defined_path(user_defined) %></td>
-        <td><%= link_to 'Destroy', user_defined, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user_defined.id %></td>
+        <td><%=l user_defined.created_at, format: :long %></td>
+        <td>
+          <%= link_to user_defined_path(user_defined), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to user_defined_path(user_defined), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User defined', new_user_defined_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_defined_path,
+            :class => 'btn btn-primary' %>

@@ -1,17 +1,10 @@
-<%= form_for(@user_defined) do |f| %>
-  <% if @user_defined.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user_defined.errors.count, "error") %> prohibited this user_defined from being saved:</h2>
+<%= form_for @user_defined, :html => { :class => 'form-horizontal form-model' } do |f| %>
 
-      <ul>
-      <% @user_defined.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  user_defineds_path, :class => 'btn btn-default' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
